@@ -1,5 +1,4 @@
 import 'package:first_week/presentation/main/main_page.dart';
-import 'package:first_week/presentation/widgets/custom_appbar.dart';
 import 'package:first_week/utils/custom_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -15,28 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'First Week',
       theme: CustomThemeData.themeData,
-      home: const MyHomePage(title: 'Главная'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(
-        title: 'Главная',
-      ),
-      body: MainPage(),
+      home: const MainPage(),
     );
   }
 }
