@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 
+import 'package:first_week/presentation/four_squares/widgets/square.dart';
 import 'package:first_week/presentation/widgets/custom_appbar.dart';
 import 'package:first_week/utils/pages.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +15,14 @@ class FourSquarePage extends StatefulWidget {
 }
 
 class _FourSquarePageState extends State<FourSquarePage> {
-  var isPressed = false;
+  static const squareListLength = 4;
+  List<Square> currentSquareList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _generateSquareList(length: squareListLength);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +40,36 @@ class _FourSquarePageState extends State<FourSquarePage> {
         crossAxisCount: 2,
         crossAxisSpacing: 16.0,
         mainAxisSpacing: 16.0,
-        children: List.generate(
-          4,
-          (_) => Container(
-            color: generateColor(),
-          ),
-        ),
+        children: currentSquareList,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() => isPressed = true),
+        onPressed: () => _generateSquareList(
+          length: squareListLength,
+          isRandom: true,
+        ),
         child: const Icon(Icons.edit),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            const Radius.circular(16.0),
+          ),
+        ),
       ),
     );
   }
 
-  Color generateColor() => isPressed ? Color(Random().nextInt(0xffffffff)) : Colors.grey;
+  Color _generateColor(bool isRandom) =>
+      isRandom ? Color(Random().nextInt(0xffffffff)) : Colors.grey;
+
+  void _generateSquareList({
+    required int length,
+    bool isRandom = false,
+  }) =>
+      setState(
+        () => currentSquareList = List.generate(
+          length,
+          (_) => Square(
+            color: _generateColor(isRandom),
+          ),
+        ),
+      );
 }
