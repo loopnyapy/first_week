@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:math';
 
 import 'package:first_week/presentation/four_squares/widgets/square.dart';
@@ -16,12 +14,12 @@ class FourSquarePage extends StatefulWidget {
 
 class _FourSquarePageState extends State<FourSquarePage> {
   static const squareListLength = 4;
-  List<Square> currentSquareList = [];
+  List<Color> currentColorList = [];
 
   @override
   void initState() {
     super.initState();
-    _generateSquareList(length: squareListLength);
+    _generateColorList(length: squareListLength);
   }
 
   @override
@@ -40,36 +38,37 @@ class _FourSquarePageState extends State<FourSquarePage> {
         crossAxisCount: 2,
         crossAxisSpacing: 16.0,
         mainAxisSpacing: 16.0,
-        children: currentSquareList,
+        children: currentColorList
+            .map(
+              (color) => Square(color: color),
+            )
+            .toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _generateSquareList(
+        onPressed: () => _generateColorList(
           length: squareListLength,
           isRandom: true,
         ),
         child: const Icon(Icons.edit),
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            const Radius.circular(16.0),
+            Radius.circular(16.0),
           ),
         ),
       ),
     );
   }
 
-  Color _generateColor(bool isRandom) =>
-      isRandom ? Color(Random().nextInt(0xffffffff)) : Colors.grey;
-
-  void _generateSquareList({
+  void _generateColorList({
     required int length,
     bool isRandom = false,
   }) =>
       setState(
-        () => currentSquareList = List.generate(
+        () => currentColorList = List.generate(
           length,
-          (_) => Square(
-            color: _generateColor(isRandom),
-          ),
+          (_) => isRandom ? _generateRandomColor() : Colors.grey,
         ),
       );
+
+  Color _generateRandomColor() => Color(Random().nextInt(0xffffffff));
 }
