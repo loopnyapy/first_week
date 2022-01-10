@@ -1,7 +1,7 @@
-import 'dart:math';
-
 import 'package:first_week/presentation/four_squares/widgets/square.dart';
 import 'package:first_week/presentation/widgets/custom_appbar.dart';
+import 'package:first_week/presentation/widgets/custom_floating_action_button.dart';
+import 'package:first_week/utils/colors_generator.dart';
 import 'package:first_week/utils/pages.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,10 @@ class _FourSquarePageState extends State<FourSquarePage> {
   @override
   void initState() {
     super.initState();
-    _generateColorList(length: squareListLength);
+    ColorsGenerator.generateColorList(
+      setWidgetState: (colorList) => setCurrentColors(colorList),
+      length: squareListLength,
+    );
   }
 
   @override
@@ -44,31 +47,19 @@ class _FourSquarePageState extends State<FourSquarePage> {
             )
             .toList(),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _generateColorList(
+      floatingActionButton: CustomFloatingActionButton(
+        onPressed: () => ColorsGenerator.generateColorList(
+          setWidgetState: (colorList) => setCurrentColors(colorList),
           length: squareListLength,
           isRandom: true,
-        ),
-        child: const Icon(Icons.edit),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(16.0),
-          ),
         ),
       ),
     );
   }
 
-  void _generateColorList({
-    required int length,
-    bool isRandom = false,
-  }) =>
-      setState(
-        () => currentColorList = List.generate(
-          length,
-          (_) => isRandom ? _generateRandomColor() : Colors.grey,
-        ),
+  void setCurrentColors(colorList) => setState(
+        () {
+          currentColorList = colorList;
+        },
       );
-
-  Color _generateRandomColor() => Color(Random().nextInt(0xffffffff));
 }
