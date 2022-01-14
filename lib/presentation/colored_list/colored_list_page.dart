@@ -19,10 +19,7 @@ class _ColoredListPageState extends State<ColoredListPage> {
   @override
   void initState() {
     super.initState();
-    ColorsGenerator.generateColorList(
-      setWidgetState: (colorList) => setCurrentColors(colorList),
-      length: currentColorListLength,
-    );
+    setCurrentColors();
   }
 
   @override
@@ -44,18 +41,17 @@ class _ColoredListPageState extends State<ColoredListPage> {
         itemCount: currentColorList.length,
       ),
       floatingActionButton: CustomFloatingActionButton(
-        onPressed: () => ColorsGenerator.generateColorList(
-          setWidgetState: (colorList) => setCurrentColors(colorList),
-          length: currentColorListLength,
-          isRandom: true,
-        ),
+        onPressed: () => setCurrentColors(isRandom: true),
       ),
     );
   }
 
-  void setCurrentColors(List<Color> colorList) => setState(
+  void setCurrentColors({bool isRandom = false}) => setState(
         () {
-          currentColorList = colorList;
+          currentColorList = ColorsGenerator.generateColorList(
+            isRandom: isRandom,
+            length: currentColorListLength,
+          );
         },
       );
 }

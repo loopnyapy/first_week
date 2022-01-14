@@ -6,7 +6,7 @@ class CustomFloatingActionButton extends StatelessWidget {
     required this.onPressed,
   }) : super(key: key);
 
-  final void Function() onPressed;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {

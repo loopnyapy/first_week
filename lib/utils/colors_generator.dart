@@ -4,15 +4,12 @@ import 'package:flutter/material.dart';
 class ColorsGenerator {
   static Color generateRandomColor() => Color(Random().nextInt(0xffffffff));
 
-  static void generateColorList({
-    required void Function(List<Color> colorList) setWidgetState,
+  static List<Color> generateColorList({
     required int length,
     bool isRandom = false,
   }) =>
-      setWidgetState(
-        List.generate(
-          length,
-          (_) => isRandom ? generateRandomColor() : Colors.grey,
-        ),
+      List.generate(
+        length,
+        (_) => isRandom ? generateRandomColor() : Colors.grey,
       );
 }

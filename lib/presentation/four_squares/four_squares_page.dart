@@ -19,10 +19,7 @@ class _FourSquarePageState extends State<FourSquarePage> {
   @override
   void initState() {
     super.initState();
-    ColorsGenerator.generateColorList(
-      setWidgetState: (colorList) => setCurrentColors(colorList),
-      length: squareListLength,
-    );
+    setCurrentColors();
   }
 
   @override
@@ -48,18 +45,17 @@ class _FourSquarePageState extends State<FourSquarePage> {
             .toList(),
       ),
       floatingActionButton: CustomFloatingActionButton(
-        onPressed: () => ColorsGenerator.generateColorList(
-          setWidgetState: (colorList) => setCurrentColors(colorList),
-          length: squareListLength,
-          isRandom: true,
-        ),
+        onPressed: () => setCurrentColors(isRandom: true),
       ),
     );
   }
 
-  void setCurrentColors(colorList) => setState(
+  void setCurrentColors({bool isRandom = false}) => setState(
         () {
-          currentColorList = colorList;
+          currentColorList = ColorsGenerator.generateColorList(
+            length: squareListLength,
+            isRandom: isRandom,
+          );
         },
       );
 }
