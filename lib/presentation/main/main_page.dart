@@ -8,7 +8,7 @@ class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'Главная',
