@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MenuItem extends StatelessWidget {
-  const MenuItem({Key? key, required this.title, required this.onTap}) : super(key: key);
+  const MenuItem({
+    Key? key,
+    required this.title,
+    required this.onTap,
+  }) : super(key: key);
 
   final String title;
   final void Function(BuildContext context) onTap;

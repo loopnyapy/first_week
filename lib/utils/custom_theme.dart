@@ -32,6 +32,7 @@ class CustomThemeData {
             letterSpacing: -0.5,
           ),
         ),
+        textTheme: const TextTheme(subtitle1: TextStyle(fontSize: 18.0)),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
