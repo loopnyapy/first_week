@@ -11,18 +11,22 @@ abstract class PhotosDataSource {
 class PhotosDataSourceImpl implements PhotosDataSource {
   @override
   Future<List<PhotoCard>> getPhotos() async {
-    final result = await http.get(
-      Uri.parse('https://jsonplaceholder.typicode.com/photos'),
-    );
+    try {
+      final result = await http.get(
+        Uri.parse('httpss://jsonplaceholder.typicode.com/photos'),
+      );
 
-    if (result.statusCode != 200) {
-      throw Exception(result.body);
+      if (result.statusCode != 200) {
+        throw Exception(result.body);
+      }
+
+      return (json.decode(result.body) as List)
+          .map(
+            (photo) => PhotoDTO.fromJson(photo).toPhotoCard(),
+          )
+          .toList();
+    } on http.ClientException catch (e) {
+      throw Exception(e);
     }
-
-    return (json.decode(result.body) as List)
-        .map(
-          (photo) => PhotoDTO.fromJson(photo).toPhotoCard(),
-        )
-        .toList();
   }
 }
