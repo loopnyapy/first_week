@@ -46,31 +46,17 @@ class _CodelabPageState extends State<CodelabPage> {
         child: CustomListViewSeparated(
           itemBuilder: (_, index) {
             var currentSuggestion = _suggestions[index];
-            var alreadySaved = _saved.contains(currentSuggestion);
+            var isAlreadySaved = _saved.contains(currentSuggestion);
 
             return WordPairRow(
               pair: currentSuggestion,
-              saved: alreadySaved,
-              onTap: () => setState(
-                () {
-                  if (alreadySaved) {
-                    _saved.remove(currentSuggestion);
-                  } else {
-                    _saved.add(currentSuggestion);
-                  }
-                },
-              ),
+              saved: isAlreadySaved,
+              onTap: () => onWordPairRowTap(isAlreadySaved, currentSuggestion),
             );
           },
           itemCount: _suggestions.length,
         ),
-        onNotification: (notification) {
-          if (notification.metrics.pixels >=
-              notification.metrics.maxScrollExtent) {
-            addWordPairsToList();
-          }
-          return true;
-        },
+        onNotification: onNotification,
       ),
     );
   }
@@ -78,4 +64,25 @@ class _CodelabPageState extends State<CodelabPage> {
   void addWordPairsToList() => setState(() {
         _suggestions.addAll(generateWordPairs().take(20));
       });
+
+  bool onNotification(ScrollUpdateNotification notification) {
+    if (notification.metrics.pixels >= notification.metrics.maxScrollExtent) {
+      addWordPairsToList();
+    }
+    return true;
+  }
+
+  void onWordPairRowTap(
+    bool isAlreadySaved,
+    WordPair currentSuggestion,
+  ) =>
+      setState(
+        () {
+          if (isAlreadySaved) {
+            _saved.remove(currentSuggestion);
+          } else {
+            _saved.add(currentSuggestion);
+          }
+        },
+      );
 }

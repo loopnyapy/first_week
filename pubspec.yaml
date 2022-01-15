@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   english_words: ^4.0.0
+  surf_lint_rules: ^1.4.1
 
 dev_dependencies:
   flutter_test:
