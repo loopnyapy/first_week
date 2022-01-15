@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({
-    Key? key,
-    required this.title,
-    this.hasLeading = false,
-    this.actions,
-  }) : super(key: key);
-
   final String title;
   final bool hasLeading;
   final List<Widget>? actions;
+
+  @override
+  Size get preferredSize => const Size.fromHeight(64.0);
+
+  const CustomAppBar({
+    required this.title,
+    Key? key,
+    this.hasLeading = false,
+    this.actions,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,4 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: actions,
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(64.0);
 }

@@ -15,7 +15,7 @@ class CustomThemeData {
     900: Color.fromRGBO(48, 164, 247, 1),
   };
 
-  static get themeData => ThemeData(
+  static ThemeData get themeData => ThemeData(
         primarySwatch: const MaterialColor(
           primaryColorHEX,
           customMaterialColors,

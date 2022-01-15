@@ -17,7 +17,7 @@ class MainPage extends StatelessWidget {
         itemCount: Pages.pageList.length,
         itemBuilder: (_, index) => MenuItem(
           title: Pages.pageList[index].name,
-          onTap: (pageContext) => Navigator.push(
+          onTap: (pageContext) => Navigator.push<MaterialPageRoute>(
             pageContext,
             MaterialPageRoute(
               builder: (_) => Pages.pageList[index].routeWidget,

@@ -3,9 +3,8 @@ import 'package:first_week/presentation/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 
 class SavedPage extends StatelessWidget {
-  const SavedPage({Key? key, required this.saved}) : super(key: key);
-
   final Set<WordPair> saved;
+  const SavedPage({required this.saved, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +19,10 @@ class SavedPage extends StatelessWidget {
                 context: context,
                 tiles: saved.map(
                   (pair) => ListTile(
-                    title: Text(pair.asPascalCase,
-                        style: Theme.of(context).textTheme.subtitle1),
+                    title: Text(
+                      pair.asPascalCase,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
                   ),
                 ),
               ).toList()
@@ -30,7 +31,7 @@ class SavedPage extends StatelessWidget {
                   child: Text(
                     "There's no saved suggestion yet! Go change it! 😎",
                   ),
-                )
+                ),
               ],
       ),
     );
