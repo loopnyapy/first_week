@@ -23,7 +23,7 @@ class _FourSquarePageState extends State<FourSquarePage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold(
       appBar: const CustomAppBar(
         title: Pages.fourSquares,

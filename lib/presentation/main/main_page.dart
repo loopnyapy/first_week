@@ -8,16 +8,16 @@ class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'Главная',
       ),
       body: CustomListViewSeparated(
         itemCount: Pages.pageList.length,
-        itemBuilder: (context, index) => MenuItem(
+        itemBuilder: (_, index) => MenuItem(
           title: Pages.pageList[index].name,
-          onTap: (BuildContext pageContext) => Navigator.push(
+          onTap: (pageContext) => Navigator.push(
             pageContext,
             MaterialPageRoute(
               builder: (_) => Pages.pageList[index].routeWidget,

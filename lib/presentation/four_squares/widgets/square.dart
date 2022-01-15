@@ -6,7 +6,7 @@ class Square extends StatelessWidget {
   final Color color;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Container(
       color: color,
     );

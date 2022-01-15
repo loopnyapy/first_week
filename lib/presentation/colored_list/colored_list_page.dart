@@ -23,7 +23,7 @@ class _ColoredListPageState extends State<ColoredListPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold(
       appBar: const CustomAppBar(
         title: Pages.coloredList,
@@ -31,8 +31,8 @@ class _ColoredListPageState extends State<ColoredListPage> {
       ),
       body: CustomListViewSeparated(
         itemBuilder: (
-          BuildContext context,
-          int index,
+          _,
+          index,
         ) =>
             Container(
           height: 70,

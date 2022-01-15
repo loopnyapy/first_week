@@ -9,7 +9,7 @@ class CustomFloatingActionButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return FloatingActionButton(
       onPressed: onPressed,
       child: const Icon(Icons.edit),

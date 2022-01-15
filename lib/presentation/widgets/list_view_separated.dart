@@ -11,14 +11,14 @@ class CustomListViewSeparated extends StatelessWidget {
   final int itemCount;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return ListView.separated(
       padding: const EdgeInsets.all(16.0),
       itemBuilder: itemBuilder,
       itemCount: itemCount,
       separatorBuilder: (
-        BuildContext context,
-        int index,
+        context,
+        index,
       ) =>
           const SizedBox(
         height: 16.0,

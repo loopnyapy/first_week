@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class MenuItem extends StatelessWidget {
-  const MenuItem({Key? key, required this.title, required this.onTap}) : super(key: key);
+  const MenuItem({Key? key, required this.title, required this.onTap})
+      : super(key: key);
 
   final String title;
   final void Function(BuildContext context) onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return ElevatedButton(
       onPressed: () => onTap(context),
       style: ButtonStyle(
