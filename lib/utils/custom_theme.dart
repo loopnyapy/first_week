@@ -32,5 +32,12 @@ class CustomThemeData {
             letterSpacing: -0.5,
           ),
         ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(16.0),
+            ),
+          ),
+        ),
       );
 }

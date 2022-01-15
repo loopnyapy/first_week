@@ -6,10 +6,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     Key? key,
     required this.title,
     this.hasLeading = false,
+    this.actions,
   }) : super(key: key);
 
   final String title;
   final bool hasLeading;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarBrightness: Brightness.light,
       ),
+      actions: actions,
     );
   }
 
