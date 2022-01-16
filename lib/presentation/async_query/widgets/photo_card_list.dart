@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class PhotoCardList extends StatelessWidget {
   final List<PhotoCard> photos;
+
   const PhotoCardList({
     required this.photos,
     Key? key,

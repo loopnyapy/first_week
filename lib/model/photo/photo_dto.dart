@@ -6,6 +6,7 @@ class PhotoDTO {
   final String title;
   final String url;
   final String thumbnailUrl;
+
   const PhotoDTO._({
     required this.albumId,
     required this.id,

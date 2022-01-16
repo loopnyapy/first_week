@@ -10,7 +10,6 @@ void main() {
       runApp(const MyApp());
     },
     (error, stack) {
-      // TODO: как правильно ловить ошибки для отображения?
       FlutterError.presentError(FlutterErrorDetails(exception: error));
     },
   );

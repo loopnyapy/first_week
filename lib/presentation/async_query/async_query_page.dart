@@ -1,4 +1,4 @@
-import 'package:first_week/data/photos_data_source.dart';
+import 'package:first_week/data/photos_data_source_impl.dart';
 import 'package:first_week/model/photo/photo_card.dart';
 import 'package:first_week/presentation/async_query/widgets/photo_card_list.dart';
 import 'package:first_week/presentation/widgets/custom_appbar.dart';

@@ -2,7 +2,7 @@ class PhotoCard {
   final String url;
   final String title;
 
-  PhotoCard({
+  const PhotoCard({
     required this.url,
     required this.title,
   });
