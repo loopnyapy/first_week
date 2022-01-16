@@ -17,7 +17,7 @@ class PhotosDataSourceImpl implements PhotosDataSource {
         throw Exception(result.body);
       }
 
-      return (json.decode(result.body) as List)
+      return List<Map<String, dynamic>>.from(json.decode(result.body) as List)
           .map(
             (photo) => PhotoDTO.fromJson(photo).toPhotoCard(),
           )
