@@ -2,16 +2,16 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
 class WordPairRow extends StatelessWidget {
-  const WordPairRow({
-    Key? key,
-    required this.pair,
-    required this.onTap,
-    this.saved = false,
-  }) : super(key: key);
-
   final WordPair pair;
   final VoidCallback onTap;
   final bool saved;
+
+  const WordPairRow({
+    required this.pair,
+    required this.onTap,
+    Key? key,
+    this.saved = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

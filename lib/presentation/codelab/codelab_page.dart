@@ -32,7 +32,7 @@ class _CodelabPageState extends State<CodelabPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.list),
-            onPressed: () => Navigator.push(
+            onPressed: () => Navigator.push<MaterialPageRoute>(
               context,
               MaterialPageRoute(
                 builder: (_) => SavedPage(saved: _saved),
@@ -45,13 +45,16 @@ class _CodelabPageState extends State<CodelabPage> {
       body: NotificationListener<ScrollUpdateNotification>(
         child: CustomListViewSeparated(
           itemBuilder: (_, index) {
-            var currentSuggestion = _suggestions[index];
-            var isAlreadySaved = _saved.contains(currentSuggestion);
+            final currentSuggestion = _suggestions[index];
+            final isAlreadySaved = _saved.contains(currentSuggestion);
 
             return WordPairRow(
               pair: currentSuggestion,
               saved: isAlreadySaved,
-              onTap: () => onWordPairRowTap(isAlreadySaved, currentSuggestion),
+              onTap: () => onWordPairRowTap(
+                currentSuggestion,
+                isAlreadySaved: isAlreadySaved,
+              ),
             );
           },
           itemCount: _suggestions.length,
@@ -73,9 +76,9 @@ class _CodelabPageState extends State<CodelabPage> {
   }
 
   void onWordPairRowTap(
-    bool isAlreadySaved,
-    WordPair currentSuggestion,
-  ) =>
+    WordPair currentSuggestion, {
+    required bool isAlreadySaved,
+  }) =>
       setState(
         () {
           if (isAlreadySaved) {

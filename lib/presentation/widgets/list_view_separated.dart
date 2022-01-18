@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CustomListViewSeparated extends StatelessWidget {
-  const CustomListViewSeparated({
-    Key? key,
-    required this.itemBuilder,
-    required this.itemCount,
-  }) : super(key: key);
-
   final Widget Function(BuildContext context, int index) itemBuilder;
   final int itemCount;
+
+  const CustomListViewSeparated({
+    required this.itemBuilder,
+    required this.itemCount,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
